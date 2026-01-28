@@ -14,7 +14,7 @@
 
     <!-- =========================
          Base Path Auto-Detect
-         - Works both on local jekyll serve and GitHub Pages project site
+         - Works on local jekyll serve and GitHub Pages project site
          ========================= -->
     {% assign _base = site.baseurl %}
     {% if _base == "" and site.github and site.github.repository_name %}
@@ -56,20 +56,39 @@
           </button>
         </div>
 
-        <!-- Search (safe, client-side) -->
+        <!-- =========================
+             Drawer Search
+             ========================= -->
         <div class="drawer__search">
-          <input id="searchInput" class="input" type="search" placeholder="Search files & pages…" autocomplete="off" />
+          <input
+            id="searchInput"
+            class="input"
+            type="search"
+            placeholder="Search files & pages…"
+            autocomplete="off"
+          />
           <div id="searchMeta" class="muted small"></div>
         </div>
 
-        <!-- Auto-generated Navigation -->
+        <!-- =========================
+             Drawer Vault Explorer
+             - Folder browsing + search results live here
+             ========================= -->
         <nav class="drawer__nav">
-          <div class="navTitle">Folders</div>
-          <div id="navTree" class="navTree">
+          <div class="navTitle">Vault</div>
+
+          <!-- Breadcrumb inside drawer -->
+          <div id="drawerBreadcrumb" class="drawerBreadcrumb">/content</div>
+
+          <!-- Explorer list -->
+          <div id="drawerList" class="drawerList">
             <div class="muted small">Loading…</div>
           </div>
         </nav>
 
+        <!-- =========================
+             Drawer Footer
+             ========================= -->
         <div class="drawer__footer">
           <a class="link" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span class="muted small">© {{ site.time | date: "%Y" }} {{ site.title }}</span>
@@ -89,7 +108,7 @@
           </button>
 
           <div class="topbar__right">
-            <a class="pill" href="content/">Open Vault</a>
+            <a class="pill" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </header>
 

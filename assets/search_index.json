@@ -14,21 +14,13 @@ permalink: /assets/search_index.json
   "pages": [
     {%- assign pages = site.pages | where_exp:"p","p.url != '/assets/search_index.json'" -%}
     {%- for p in pages -%}
-      {%- assign in_content_prefix = p.path | slice: 0, 8 -%}
-      {%- if in_content_prefix == 'content/' -%}
-        {%- assign inContentBool = true -%}
-      {%- else -%}
-        {%- assign inContentBool = false -%}
-      {%- endif -%}
-
       {%- assign excluded = p.exclude_from_nav -%}
       {%- if excluded != true -%}
       {
         "type": "page",
         "title": {{ p.title | default: p.name | jsonify }},
         "url": {{ p.url | jsonify }},
-        "path": {{ p.path | jsonify }},
-        "inContent": {{ inContentBool | jsonify }}
+        "path": {{ p.path | jsonify }}
       }{%- unless forloop.last -%},{%- endunless -%}
       {%- endif -%}
     {%- endfor -%}
