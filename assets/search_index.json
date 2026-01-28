@@ -1,0 +1,43 @@
+---
+permalink: /assets/search_index.json
+---
+
+{%- comment -%}
+  =========================
+  Search/Navigation Index (generated at build-time)
+  - Includes:
+    1) Pages (site.pages) under content/ OR any pages not excluded
+    2) Static files (site.static_files) under /content/
+  =========================
+{%- endcomment -%}
+
+{
+  "generated": {{ site.time | date_to_xmlschema | jsonify }},
+  "pages": [
+    {%- assign pages = site.pages | where_exp:"p","p.url != '/assets/search_index.json'" -%}
+    {%- for p in pages -%}
+      {%- assign in_content = p.path | slice: 0, 8 -%}
+      {%- assign excluded = p.exclude_from_nav -%}
+      {%- if excluded != true -%}
+      {
+        "type": "page",
+        "title": {{ p.title | default: p.name | jsonify }},
+        "url": {{ p.url | jsonify }},
+        "path": {{ p.path | jsonify }},
+        "inContent": {{ (in_content == 'content/') | jsonify }}
+      }{%- if forloop.last == false -%},{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  "files": [
+    {%- assign files = site.static_files | where_exp:"f","f.path contains '/content/'" -%}
+    {%- for f in files -%}
+      {
+        "type": "file",
+        "name": {{ f.name | jsonify }},
+        "url": {{ f.path | jsonify }},
+        "path": {{ f.path | jsonify }}
+      }{%- if forloop.last == false -%},{%- endif -%}
+    {%- endfor -%}
+  ]
+}

@@ -1,0 +1,61 @@
+---
+layout: default
+title: Home
+---
+
+<!-- =========================
+     Hero
+     ========================= -->
+<div class="hero">
+  <div class="hero__bg"></div>
+
+  <div class="hero__inner">
+    <div class="badge">ENGLISH ONLY · Minimal · Fast</div>
+    <h1 class="h1">sudoxs Security Vault</h1>
+    <p class="lead">
+      A clean, static, GitHub Pages friendly vault that auto-indexes your <code>content/</code> directory.
+      Add folders/files — the hamburger menu and browser update automatically.
+    </p>
+
+    <div class="ctaRow">
+      <a class="btn" href="content/">Browse content/</a>
+      <a class="btn btn--ghost" href="assets/search_index.json">Index JSON</a>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card__title">Auto Navigation</div>
+        <div class="card__text">Menu is generated from your <code>content/</code> directory during build.</div>
+      </div>
+      <div class="card">
+        <div class="card__title">Secure Search</div>
+        <div class="card__text">Client-side search using safe DOM updates (no HTML injection).</div>
+      </div>
+      <div class="card">
+        <div class="card__title">GitHub Pages Ready</div>
+        <div class="card__text">Base-path auto-detect works on repo pages and local serve.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+     Vault Browser (Homepage View)
+     ========================= -->
+<div class="panel">
+  <div class="panel__head">
+    <div>
+      <div class="h2">Vault Browser</div>
+      <div class="muted small">Click folders from the menu, or browse below.</div>
+    </div>
+
+    <div class="crumbs">
+      <span class="muted small">Path:</span>
+      <span id="breadcrumb" class="breadcrumb">/</span>
+    </div>
+  </div>
+
+  <div id="list" class="list">
+    <div class="muted small">Loading…</div>
+  </div>
+</div>

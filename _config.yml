@@ -1,0 +1,22 @@
+# =========================
+# Jekyll Config
+# =========================
+
+title: sudoxs
+description: "Security portfolio & knowledge vault"
+markdown: kramdown
+
+# We keep baseurl empty to avoid local-vs-GitHub mismatch.
+# We will auto-detect repo base path on GitHub Pages using site.github variables in templates.
+baseurl: ""
+
+# Keep it simple (GitHub Pages compatible)
+plugins: []
+
+# Optional: exclude things you don't want published
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - vendor

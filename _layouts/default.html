@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- =========================
+         Base / SEO
+         ========================= -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="{{ site.description | escape }}" />
+
+    <title>
+      {% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}
+    </title>
+
+    <!-- =========================
+         Base Path Auto-Detect
+         - Works both on local jekyll serve and GitHub Pages project site
+         ========================= -->
+    {% assign _base = site.baseurl %}
+    {% if _base == "" and site.github and site.github.repository_name %}
+      {% assign _base = "/" | append: site.github.repository_name %}
+    {% endif %}
+    <meta name="site-base" content="{{ _base }}" />
+
+    <!-- IMPORTANT:
+         Using <base> makes ALL relative links work under the repo path on GitHub Pages. -->
+    <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}">
+
+    <!-- =========================
+         Styles
+         ========================= -->
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+         App Shell
+         ========================= -->
+    <div class="app">
+
+      <!-- =========================
+           Sidebar (Hamburger Drawer)
+           ========================= -->
+      <aside id="drawer" class="drawer" aria-hidden="true">
+        <div class="drawer__header">
+          <div class="brand">
+            <div class="brand__dot"></div>
+            <div class="brand__text">
+              <div class="brand__name">{{ site.title }}</div>
+              <div class="brand__tag">Security Vault</div>
+            </div>
+          </div>
+
+          <button id="drawerClose" class="iconBtn" type="button" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <!-- Search (safe, client-side) -->
+        <div class="drawer__search">
+          <input id="searchInput" class="input" type="search" placeholder="Search files & pages…" autocomplete="off" />
+          <div id="searchMeta" class="muted small"></div>
+        </div>
+
+        <!-- Auto-generated Navigation -->
+        <nav class="drawer__nav">
+          <div class="navTitle">Folders</div>
+          <div id="navTree" class="navTree">
+            <div class="muted small">Loading…</div>
+          </div>
+        </nav>
+
+        <div class="drawer__footer">
+          <a class="link" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <span class="muted small">© {{ site.time | date: "%Y" }} {{ site.title }}</span>
+        </div>
+      </aside>
+
+      <!-- Overlay -->
+      <div id="overlay" class="overlay" hidden></div>
+
+      <!-- =========================
+           Main
+           ========================= -->
+      <main class="main">
+        <header class="topbar">
+          <button id="drawerOpen" class="iconBtn" type="button" aria-label="Open menu">
+            ☰
+          </button>
+
+          <div class="topbar__right">
+            <a class="pill" href="content/">Open Vault</a>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <section class="content">
+          {{ content }}
+        </section>
+
+        <footer class="pageFooter">
+          <span class="muted small">Built with Jekyll · GitHub Pages friendly</span>
+        </footer>
+      </main>
+    </div>
+
+    <!-- =========================
+         Scripts
+         ========================= -->
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
