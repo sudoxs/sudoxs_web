@@ -5,9 +5,7 @@ permalink: /assets/search_index.json
 {%- comment -%}
   =========================
   Search/Navigation Index (generated at build-time)
-  - Includes:
-    1) Pages (site.pages) under content/ OR any pages not excluded
-    2) Static files (site.static_files) under /content/
+  - Works on GitHub Pages + local jekyll serve
   =========================
 {%- endcomment -%}
 
@@ -16,7 +14,13 @@ permalink: /assets/search_index.json
   "pages": [
     {%- assign pages = site.pages | where_exp:"p","p.url != '/assets/search_index.json'" -%}
     {%- for p in pages -%}
-      {%- assign in_content = p.path | slice: 0, 8 -%}
+      {%- assign in_content_prefix = p.path | slice: 0, 8 -%}
+      {%- if in_content_prefix == 'content/' -%}
+        {%- assign inContentBool = true -%}
+      {%- else -%}
+        {%- assign inContentBool = false -%}
+      {%- endif -%}
+
       {%- assign excluded = p.exclude_from_nav -%}
       {%- if excluded != true -%}
       {
@@ -24,8 +28,8 @@ permalink: /assets/search_index.json
         "title": {{ p.title | default: p.name | jsonify }},
         "url": {{ p.url | jsonify }},
         "path": {{ p.path | jsonify }},
-        "inContent": {{ (in_content == 'content/') | jsonify }}
-      }{%- if forloop.last == false -%},{%- endif -%}
+        "inContent": {{ inContentBool | jsonify }}
+      }{%- unless forloop.last -%},{%- endunless -%}
       {%- endif -%}
     {%- endfor -%}
   ],
@@ -37,7 +41,7 @@ permalink: /assets/search_index.json
         "name": {{ f.name | jsonify }},
         "url": {{ f.path | jsonify }},
         "path": {{ f.path | jsonify }}
-      }{%- if forloop.last == false -%},{%- endif -%}
+      }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
   ]
 }
