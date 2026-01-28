@@ -5,6 +5,7 @@ permalink: /assets/search_index.json
 {%- comment -%}
   =========================
   Search/Navigation Index (generated at build-time)
+  - Includes page body text for Markdown pages
   - Works on GitHub Pages + local jekyll serve
   =========================
 {%- endcomment -%}
@@ -20,7 +21,8 @@ permalink: /assets/search_index.json
         "type": "page",
         "title": {{ p.title | default: p.name | jsonify }},
         "url": {{ p.url | jsonify }},
-        "path": {{ p.path | jsonify }}
+        "path": {{ p.path | jsonify }},
+        "body": {{ p.content | strip_html | strip_newlines | replace: "  ", " " | truncate: 4000 | jsonify }}
       }{%- unless forloop.last -%},{%- endunless -%}
       {%- endif -%}
     {%- endfor -%}

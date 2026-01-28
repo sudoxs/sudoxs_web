@@ -275,7 +275,7 @@ function attachSearch(allItems) {
       })
       .filter(x => {
         const title = x.type === "page" ? x.title : x.name;
-        const hay = normalize(`${title || ""} ${x.path || ""} ${x.url || ""}`);
+        const hay = normalize(`${title || ""} ${x.body || ""} ${x.path || ""} ${x.url || ""}`);
         return hay.includes(q);
       })
       .slice(0, 40);
@@ -323,8 +323,10 @@ function attachSearch(allItems) {
         type: "page",
         title: p.title,
         url: p.url,
-        path: p.path
+        path: p.path,
+        body: p.body
       })),
+
       ...(INDEX.files || []).map(f => ({
         type: "file",
         name: f.name,
