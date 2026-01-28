@@ -348,3 +348,53 @@ function attachSearch(allItems) {
     if (list) list.textContent = "Failed to load index.";
   }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const drawer = document.getElementById("drawer");
+//   const openBtn = document.getElementById("drawerOpen");
+//   const closeBtn = document.getElementById("drawerClose");
+//   const overlay = document.getElementById("overlay"); // اگر داری
+
+//   if (!drawer || !openBtn || !closeBtn) return;
+
+//   function openDrawer() {
+//     drawer.classList.add("isOpen");
+//     drawer.setAttribute("aria-hidden", "false");
+//     openBtn.setAttribute("aria-expanded", "true");
+//     openBtn.classList.add("isActive");
+//     if (overlay) overlay.hidden = false;
+//   }
+
+//   function closeDrawer() {
+//     drawer.classList.remove("isOpen");
+//     drawer.setAttribute("aria-hidden", "true");
+//     openBtn.setAttribute("aria-expanded", "false");
+//     openBtn.classList.remove("isActive");
+//     if (overlay) overlay.hidden = true;
+//   }
+
+//   openBtn.addEventListener("click", openDrawer);
+//   closeBtn.addEventListener("click", closeDrawer);
+
+//   if (overlay) overlay.addEventListener("click", closeDrawer);
+
+//   document.addEventListener("keydown", (e) => {
+//     if (e.key === "Escape") closeDrawer();
+//   });
+// });

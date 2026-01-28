@@ -429,3 +429,61 @@ code{
   border-color: rgba(124,92,255,0.55);
   background: rgba(124,92,255,0.10);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.mbtn{
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+
+  display: inline-block;              
+  position: relative;                
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+
+  filter: hue-rotate(0deg);
+
+  background:
+    radial-gradient(circle, var(--main-bg-color) 0%, rgba(0,0,0,0) 95%),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+
+  background-repeat: no-repeat, repeat, repeat;   
+  background-size: 100% 100%, 15px 15px, 15px 15px;
+  background-position: center, center, center;
+
+  border-image: radial-gradient(circle, var(--main-color) 0%, rgba(0,0,0,0) 100%) 1;
+  border-width: 1px 0;
+  border-style: solid;
+
+  color: var(--main-color);
+  padding: 1rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+
+  transition: background-size 0.2s ease-in-out, filter 0.25s ease;
+  will-change: background-size; 
+}
+
+.mbtn:hover{
+  background-size: 100% 100%, 10px 10px, 10px 10px;
+}
+
+.mbtn:active{
+  filter: hue-rotate(250deg);
+} */

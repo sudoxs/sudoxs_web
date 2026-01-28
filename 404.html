@@ -1,11 +1,203 @@
----
-layout: default
-title: Not Found
-permalink: /404.html
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>404</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="panel">
-  <div class="h2">404</div>
-  <p class="muted">Page not found.</p>
-  <a class="btn" href="./">Go Home</a>
-</div>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #090a0f;
+      font-family: "Lato", sans-serif;
+    }
+
+    /* =========================
+       Star Background
+       ========================= */
+    .container {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+    }
+
+    #stars, #stars2, #stars3 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* ---- STARS 1 ---- */
+    #stars {
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow:
+        501px 811px #fff, 1450px 1324px #fff, 404px 975px #fff,
+        732px 1420px #fff, 1290px 340px #fff, 1678px 1820px #fff;
+      animation: animStar 50s linear infinite;
+    }
+    #stars::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 1px;
+      height: 1px;
+      box-shadow: inherit;
+    }
+
+    /* ---- STARS 2 ---- */
+    #stars2 {
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow:
+        1925px 1320px #fff, 693px 1778px #fff, 939px 1922px #fff,
+        120px 640px #fff, 1530px 980px #fff, 845px 420px #fff;
+      animation: animStar 100s linear infinite;
+    }
+    #stars2::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 2px;
+      height: 2px;
+      box-shadow: inherit;
+    }
+
+    /* ---- STARS 3 ---- */
+    #stars3 {
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow:
+        200px 981px #fff, 1731px 521px #fff, 1888px 1547px #fff,
+        1024px 256px #fff, 620px 1440px #fff, 1600px 720px #fff;
+      animation: animStar 150s linear infinite;
+    }
+    #stars3::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 3px;
+      height: 3px;
+      box-shadow: inherit;
+    }
+
+    @keyframes animStar {
+      from { transform: translateY(0); }
+      to { transform: translateY(-2000px); }
+    }
+
+    /* =========================
+       Center Content
+       ========================= */
+    .center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    #title {
+      font-size: 72px;
+      letter-spacing: 12px;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: introFadeUp 1.2s ease-out forwards;
+    }
+
+    #title span {
+      background: linear-gradient(white, #38495a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes introFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       Glitch Text
+       ========================= */
+    .glitch {
+      position: relative;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+      animation: shift 1s ease-in-out infinite alternate;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-glitch);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: #8b00ff;
+      animation: glitch 0.4s infinite;
+      z-index: -1;
+    }
+
+    .glitch::after {
+      color: #00e571;
+      animation: glitch 0.4s infinite reverse;
+      z-index: -2;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes shift {
+      0%,100% { transform: skewX(0deg); }
+      50% { transform: skewX(-10deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Stars x3 (density boost) -->
+    <div id="stars"></div>
+    <div id="stars"></div>
+    <div id="stars"></div>
+
+    <div id="stars2"></div>
+    <div id="stars2"></div>
+    <div id="stars2"></div>
+
+    <div id="stars3"></div>
+    <div id="stars3"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <div class="center">
+    <div id="title"><span>404</span></div>
+    <div class="glitch" data-glitch="NOT FOUND">NOT FOUND</div>
+  </div>
+</body>
+</html>
